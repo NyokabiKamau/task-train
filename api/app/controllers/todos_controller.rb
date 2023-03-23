@@ -19,6 +19,17 @@ class TodosController < ApplicationController
         end
     end
 
+    def destroy
+        user.todos.find(params[:id]).destroy
+        app_response(message: 'success', data: { info: 'deleted todo successfully'}, status: 204)
+        # head :no_content
+    end
+
+    def index
+        todos = user.todos.all
+        app_response(message: 'success', data: todos)
+    end
+
     private 
 
     def todo_params
