@@ -604,3 +604,389 @@ Processing by TodosController#index as */*
 Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 5.6ms | Allocations: 4776)
 
 
+Started POST "/todos/1" for 127.0.0.1 at 2023-03-23 14:07:56 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"CREATED", "id"=>"1", "todo"=>{"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"CREATED"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:14:in `update'
+Completed 422 Unprocessable Entity in 14ms (Views: 0.5ms | ActiveRecord: 1.4ms | Allocations: 1672)
+
+
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 14:08:08 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"CREATED", "todo"=>{"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"CREATED"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+[31mUnpermitted parameter: :todo. Context: { controller: TodosController, action: create, request: #<ActionDispatch::Request:0x00007f9dccb8f558>, params: {"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"CREATED", "controller"=>"todos", "action"=>"create", "todo"=>{"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"CREATED"}} }[0m
+Completed 422 Unprocessable Entity in 8ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 2508)
+
+
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 14:08:27 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"HIGH", "todo"=>{"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"HIGH"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+[31mUnpermitted parameter: :todo. Context: { controller: TodosController, action: create, request: #<ActionDispatch::Request:0x00007f9ddbf7aff0>, params: {"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"HIGH", "controller"=>"todos", "action"=>"create", "todo"=>{"title"=>"Add Todo Endpoint", "description"=>"Make sure you add the create todo endpoint", "priority"=>"HIGH"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+  [1m[36mTodo Create (2.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "status", "priority", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Add Todo Endpoint"], ["description", "Make sure you add the create todo endpoint"], ["status", 0], ["priority", 2], ["user_id", 2], ["created_at", "2023-03-23 11:08:27.028658"], ["updated_at", "2023-03-23 11:08:27.028658"]]
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+Completed 201 Created in 15ms (Views: 0.5ms | ActiveRecord: 3.8ms | Allocations: 3075)
+
+
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 14:08:57 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+[31mUnpermitted parameter: :todo. Context: { controller: TodosController, action: create, request: #<ActionDispatch::Request:0x00007f9dbc7f80a8>, params: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH", "controller"=>"todos", "action"=>"create", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+  [1m[36mTodo Create (1.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "status", "priority", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Update Todo Endpoint"], ["description", "Make sure you update the todo endpoint"], ["status", 0], ["priority", 2], ["user_id", 2], ["created_at", "2023-03-23 11:08:57.103252"], ["updated_at", "2023-03-23 11:08:57.103252"]]
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+Completed 201 Created in 11ms (Views: 0.4ms | ActiveRecord: 2.1ms | Allocations: 2937)
+
+
+Started POST "/todos/2" for 127.0.0.1 at 2023-03-23 14:09:14 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"CREATED", "id"=>"2", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"CREATED"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:14:in `update'
+Completed 422 Unprocessable Entity in 6ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started POST "/todos/4" for 127.0.0.1 at 2023-03-23 14:09:25 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"CREATED", "id"=>"4", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"CREATED"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:14:in `update'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f9dccb87ee8>, params: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"CREATED", "controller"=>"todos", "action"=>"update", "id"=>"4", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"CREATED"}} }[0m
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1802)
+
+
+Started POST "/todos/4" for 127.0.0.1 at 2023-03-23 14:09:34 +0300
+Processing by TodosController#update as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM", "id"=>"4", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT ?[0m  [["user_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/todos_controller.rb:14:in `update'
+[31mUnpermitted parameters: :id, :todo. Context: { controller: TodosController, action: update, request: #<ActionDispatch::Request:0x00007f9dbd83df58>, params: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM", "controller"=>"todos", "action"=>"update", "id"=>"4", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:14:in `update'
+  [1m[36mTodo Update (1.3ms)[0m  [1m[33mUPDATE "todos" SET "priority" = ?, "updated_at" = ? WHERE "todos"."id" = ?[0m  [["priority", 1], ["updated_at", "2023-03-23 11:09:34.529674"], ["id", 4]]
+  ↳ app/controllers/todos_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:14:in `update'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 3250)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-03-23 14:11:55 +0300
+Processing by TodosController#index as */*
+  Parameters: {"priority"=>"MEDIUM", "todo"=>{"priority"=>"MEDIUM"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:7:in `app_response'
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 1760)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "todos"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar NOT NULL, "description" text NOT NULL, "status" integer DEFAULT 0 NOT NULL, "priority" integer DEFAULT 0 NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_todos_on_user_id" ON "todos" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atodos" ("id" integer NOT NULL PRIMARY KEY, "title" varchar NOT NULL, "description" text NOT NULL, "status" integer DEFAULT 0 NOT NULL, "priority" integer DEFAULT 0 NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_atodos_on_user_id" ON "atodos" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "atodos" ("id","title","description","status","priority","user_id","created_at","updated_at")
+                     SELECT "id","title","description","status","priority","user_id","created_at","updated_at" FROM "todos"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "todos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer NOT NULL PRIMARY KEY, "title" varchar NOT NULL, "description" text NOT NULL, "status" integer DEFAULT 0 NOT NULL, "priority" integer DEFAULT 0 NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d94154aa95"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_todos_on_user_id" ON "todos" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "todos" ("id","title","description","status","priority","user_id","created_at","updated_at")
+                     SELECT "id","title","description","status","priority","user_id","created_at","updated_at" FROM "atodos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "atodos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230323082556)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230322074129);
+
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-23 14:40:02.237483"], ["updated_at", "2023-03-23 14:40:02.237483"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "d30ae8a87761bdab34535645733e72b159777633"], ["created_at", "2023-03-23 14:40:02.241328"], ["updated_at", "2023-03-23 14:40:02.241328"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "todos"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar NOT NULL, "description" text NOT NULL, "status" integer DEFAULT 0 NOT NULL, "priority" integer DEFAULT 0 NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_todos_on_user_id" ON "todos" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atodos" ("id" integer NOT NULL PRIMARY KEY, "title" varchar NOT NULL, "description" text NOT NULL, "status" integer DEFAULT 0 NOT NULL, "priority" integer DEFAULT 0 NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_atodos_on_user_id" ON "atodos" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "atodos" ("id","title","description","status","priority","user_id","created_at","updated_at")
+                     SELECT "id","title","description","status","priority","user_id","created_at","updated_at" FROM "todos"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "todos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer NOT NULL PRIMARY KEY, "title" varchar NOT NULL, "description" text NOT NULL, "status" integer DEFAULT 0 NOT NULL, "priority" integer DEFAULT 0 NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d94154aa95"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_todos_on_user_id" ON "todos" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "todos" ("id","title","description","status","priority","user_id","created_at","updated_at")
+                     SELECT "id","title","description","status","priority","user_id","created_at","updated_at" FROM "atodos"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atodos"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230323082556)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230322074129);
+
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-23 14:40:02.260527"], ["updated_at", "2023-03-23 14:40:02.260527"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2023-03-23 14:40:02.262980"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "d30ae8a87761bdab34535645733e72b159777633"], ["created_at", "2023-03-23 14:40:02.265409"], ["updated_at", "2023-03-23 14:40:02.265409"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 17:43:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+Completed 422 Unprocessable Entity in 16ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 24088)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-03-23 17:43:59 +0300
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"nyokabi", "password"=>"[FILTERED]", "email"=>"nk@gmail.com", "user"=>{"username"=>"nyokabi", "email"=>"nk@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007f9f0b1075a0>, params: {"username"=>"nyokabi", "password"=>"[FILTERED]", "email"=>"nk@gmail.com", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"nyokabi", "email"=>"nk@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "nyokabi"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "nk@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "nyokabi"], ["email", "nk@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-03-23 14:43:59.704881"], ["updated_at", "2023-03-23 14:43:59.704881"]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "nyokabi"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "nk@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+Completed 201 Created in 290ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 20507)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2023-03-23 17:44:08 +0300
+Processing by UsersController#login as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"nk@gmail.com", "user"=>{"email"=>"nk@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f9efd654c50>, params: {"password"=>"[FILTERED]", "email"=>"nk@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"email"=>"nk@gmail.com"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f9efd654c50>, params: {"password"=>"[FILTERED]", "email"=>"nk@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"email"=>"nk@gmail.com"}} }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = 'nk@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f9efd654c50>, params: {"password"=>"[FILTERED]", "email"=>"nk@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"email"=>"nk@gmail.com"}} }[0m
+Completed 200 OK in 289ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1604)
+
+
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 17:44:17 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+[31mUnpermitted parameter: :todo. Context: { controller: TodosController, action: create, request: #<ActionDispatch::Request:0x00007f9efd67dbf0>, params: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH", "controller"=>"todos", "action"=>"create", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"HIGH"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "status", "priority", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Update Todo Endpoint"], ["description", "Make sure you update the todo endpoint"], ["status", 0], ["priority", 2], ["user_id", 1], ["created_at", "2023-03-23 14:44:17.356224"], ["updated_at", "2023-03-23 14:44:17.356224"]]
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+Completed 201 Created in 38ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 21938)
+
+
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 17:45:01 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Add Todo Endpoint", "description"=>"Make sure you create the add todo endpoint", "priority"=>"HIGH", "todo"=>{"title"=>"Add Todo Endpoint", "description"=>"Make sure you create the add todo endpoint", "priority"=>"HIGH"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+[31mUnpermitted parameter: :todo. Context: { controller: TodosController, action: create, request: #<ActionDispatch::Request:0x00007f9efd6beba0>, params: {"title"=>"Add Todo Endpoint", "description"=>"Make sure you create the add todo endpoint", "priority"=>"HIGH", "controller"=>"todos", "action"=>"create", "todo"=>{"title"=>"Add Todo Endpoint", "description"=>"Make sure you create the add todo endpoint", "priority"=>"HIGH"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+  [1m[36mTodo Create (2.7ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "status", "priority", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Add Todo Endpoint"], ["description", "Make sure you create the add todo endpoint"], ["status", 0], ["priority", 2], ["user_id", 1], ["created_at", "2023-03-23 14:45:01.245513"], ["updated_at", "2023-03-23 14:45:01.245513"]]
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/todos_controller.rb:5:in `create'
+Completed 201 Created in 15ms (Views: 0.4ms | ActiveRecord: 4.0ms | Allocations: 2945)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:45:48 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 182)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:45:57 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:45:57 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:46:12 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:46:12 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:46:19 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:46:19 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:46:46 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:46:58 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:46:58 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-03-23 17:47:23 +0300
+Processing by TodosController#index as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:42:in `user'
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `app_response'
+Completed 200 OK in 11ms (Views: 3.4ms | ActiveRecord: 1.1ms | Allocations: 1963)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:47:39 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:55:19 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 2ms (Views: 0.6ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:57:01 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 1ms (Views: 0.5ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 17:57:01 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 1ms (Views: 0.3ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 18:29:46 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 6ms (Views: 0.8ms | Allocations: 181)
+
+
+Started GET "/todos" for ::1 at 2023-03-23 18:29:46 +0300
+Processing by TodosController#index as */*
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | Allocations: 181)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-03-23 20:27:42 +0300
+Processing by TodosController#index as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM", "todo"=>{"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `user'
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `app_response'
+Completed 200 OK in 19ms (Views: 3.6ms | ActiveRecord: 7.3ms | Allocations: 6691)
+
+
+Started GET "/todos/1" for 127.0.0.1 at 2023-03-23 20:28:28 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/todos/1"):
+  
+Started GET "/todos/3" for 127.0.0.1 at 2023-03-23 20:28:33 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/todos/3"):
+  
+Started GET "/todos/2" for 127.0.0.1 at 2023-03-23 20:28:38 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/todos/2"):
+  
+Started GET "/check_login_status" for 127.0.0.1 at 2023-03-23 20:29:56 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/check_login_status"):
+  
+Started GET "//users/login/check" for 127.0.0.1 at 2023-03-23 20:30:14 +0300
+Processing by UsersController#check_login_status as */*
+  Parameters: {"title"=>"Update Todo Endpoint", "description"=>"Make sure you update the todo endpoint", "priority"=>"MEDIUM", "user"=>{}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 375)
+
+
