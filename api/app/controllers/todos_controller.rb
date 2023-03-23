@@ -15,7 +15,7 @@ class TodosController < ApplicationController
         if todo
             app_response(data: { info: 'updated todo successfully' })
         else
-            app_response(message: 'failed', data: { info: 'something went wrong. coud not update todo' })
+            app_response(message: 'failed', data: { info: 'something went wrong. coud not update todo' }, status: :unprocessable_entity)
         end
     end
 
