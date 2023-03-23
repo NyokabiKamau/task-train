@@ -29,4 +29,9 @@ class ApplicationController < ActionController::API
                 info: 'Your session has expired. Please login again to continue'})
         end
     end
+
+    # get loggoed in user
+    def user
+        User.find(session[:uid].to_i)
+    end
 end
